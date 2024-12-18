@@ -1,0 +1,37 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'CPU, RAM, Dick space' # Джоб для Node Exporter
+    consul_sd_configs:
+      - server: '172.20.43.250:8500' # IP адрес сервера где стоит Consul
+    relabel_configs:
+      - source_labels: ['__meta_consul_service']
+        regex: 'node-exporter'
+        action: keep
+      - source_labels: ['__meta_consul_tags']
+        regex: '.*IS_name:(.*?),.*'
+        target_label: 'IS_name'
+
+  - job_name: 'redis' # Джоб для Redis Exporter
+    consul_sd_configs:
+      - server: '172.20.43.250:8500'
+    relabel_configs:
+      - source_labels: ['__meta_consul_service']
+        regex: 'redis-exporter'
+        action: keep
+      - source_labels: ['__meta_consul_tags']
+        regex: '.*IS_name:(.*?),.*'
+        target_label: 'IS_name'
+
+  - job_name: 'mysql' # Джоб для MySQL Exporter
+    consul_sd_configs:
+      - server: '172.20.43.250:8500'
+    relabel_configs:
+      - source_labels: ['__meta_consul_service']
+        regex: 'mysql-exporter'
+        action: keep
+      - source_labels: ['__meta_consul_tags']
+        regex: '.*IS_name:(.*?),.*'
+        target_label: 'IS_name'

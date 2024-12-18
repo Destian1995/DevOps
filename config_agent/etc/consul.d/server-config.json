@@ -1,0 +1,19 @@
+{
+  "datacenter": "dc1",
+  "node_name": "node-2",
+  "server": false,
+  "retry_join": ["172.20.43.250"],
+  "bind_addr": "172.20.43.251",
+  "advertise_addr": "172.20.43.251",
+  "client_addr": "0.0.0.0",
+  "log_level": "INFO",
+  "enable_syslog": true,
+  "data_dir": "/opt/consul/data",
+  "encrypt": "EXjl9sJcoj1DSMCmaNAM89Ot/f+U2AKc4eankNszOhE=",
+  "performance": {
+    "raft_multiplier": 1
+  },
+  "telemetry": {
+    "disable_hostname": true
+  }
+}

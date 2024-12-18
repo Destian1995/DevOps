@@ -1,0 +1,8 @@
+{
+  "service": {
+    "name": "node-exporter",
+    "tags": ["prometheus", "IS_name:Kafka"],
+    "port": 9100,
+    "address": "172.20.43.251"
+  }
+}
